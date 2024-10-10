@@ -1,1 +1,1 @@
-# Unity fundamentals project GIT
+# Unity fundamentals project
