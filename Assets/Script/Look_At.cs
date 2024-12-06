@@ -12,18 +12,19 @@ using static UnityEngine.ProBuilder.AutoUnwrapSettings;
 
 public class Look_At : MonoBehaviour
 {
-    public GameObject player;
-    public GameObject Child;
+    public GameObject pPlayer;
+    public GameObject pCamera;
     public float speed = 1f;
 
-    float angle;
+    Quaternion LookRotation;
+    float angle = 6f;
     FirstPersonController Script;
     bool isCoroutineRunning;
     private Coroutine LookCoroutine;
 
     private void Start()
     {
-        Script = player.GetComponent<FirstPersonController>();
+        Script = pPlayer.GetComponent<FirstPersonController>();
     }
 
     public void StartRotation()
@@ -40,54 +41,66 @@ public class Look_At : MonoBehaviour
 
     private IEnumerator LookAt()
     {
-        Quaternion LookRotation = Quaternion.LookRotation(transform.position - player.transform.position);
-
-        float time = 0f;
+        LookRotation = Quaternion.LookRotation(transform.position - pCamera.transform.position);    
         Script.LockCamera = true;
+        float time = 0f;
 
         while (time < 1)
         {
-            isCoroutineRunning = true;
-            player.transform.rotation = Quaternion.Slerp(player.transform.rotation, LookRotation, time);
+            
+            pCamera.transform.rotation = Quaternion.Slerp(pCamera.transform.rotation, LookRotation, time);
 
             time  += Time.deltaTime * speed;
 
-            //angle = Quaternion.Angle(player.transform.rotation, LookRotation);
+            angle = Quaternion.Angle(pCamera.transform.rotation, LookRotation);
 
-            yield return null;
+            yield return null; 
         }
-        
     }
 
     
     void Update()
     {
-        Debug.Log(isCoroutineRunning+"   "+ angle);
 
+        
         if (Input.GetKeyDown(KeyCode.I))
         {
             StartRotation();
+            isCoroutineRunning = true;
+            
         }
-        
-        if (angle < 5 && isCoroutineRunning)
-        {    //Debug.Log(player.transform.eulerAngles.x+"   "+ Script.pitch);
-            //if (player.transform.eulerAngles.x < 0) Script.pitch = player.transform.eulerAngles.x;
-            //if (player.transform.eulerAngles.x >= 0) Script.pitch = player.transform.eulerAngles.x - 360f;
-            //Debug.Log(Script.pitch);
-            //Vector3 eulerRotation = (new Vector3)final;
-            //Debug.Log(Quaternion.Euler(eulerRotation));
-            //Child.transform.Rotate(eulerRotation);
-            ////float rotationX = player.transform.rotation.x;
-            //
+        if(Input.GetKeyDown(KeyCode.O))
+        {
+            Debug.Log("CLICKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+            Debug.Log("Look AT" + LookRotation.eulerAngles + "  camera: " + pCamera.transform.localEulerAngles.x + "player: " + pPlayer.transform.localEulerAngles.y);
+            Script.pitch = LookRotation.eulerAngles.x- 360f;
 
-            //Vector3 eulerRotation = new Vector3(player.transform.eulerAngles.x, Child.transform.eulerAngles.y,Child.transform.eulerAngles.z);
-            //Child.transform.rotation = Quaternion.Euler(eulerRotation);
-
-            angle = 0f;
+            pPlayer.transform.localEulerAngles = new Vector3(0,LookRotation.eulerAngles.y,0);
+           
+            Debug.Log("Look AT" + LookRotation.eulerAngles + "  camera: " + pCamera.transform.localEulerAngles.x + "player: " + pPlayer.transform.localEulerAngles.y);
+           
             StopCoroutine(LookCoroutine);
-            isCoroutineRunning = false;
-
             Script.LockCamera = false;
+            isCoroutineRunning = false;
+            Debug.Log("Look AT" + LookRotation.eulerAngles + "  camera: " + pCamera.transform.localEulerAngles.x + "player: " + pPlayer.transform.localEulerAngles.y);
+        }
+
+
+
+        if (angle < 0.0001 && isCoroutineRunning)
+        {
+            StopCoroutine(LookCoroutine);
+            Debug.Log("CLICKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
+            pPlayer.transform.localEulerAngles = new Vector3(0, LookRotation.eulerAngles.y, 0);
+            Script.pitch = LookRotation.eulerAngles.x - 360f;
+
+            Debug.Log("Look AT" + LookRotation.eulerAngles + "  camera: " + pCamera.transform.localEulerAngles.x + "player: " + pPlayer.transform.localEulerAngles.y);
+
+
+            
+            
+            Script.LockCamera = false;
+            isCoroutineRunning = false;
         }
     }
 }
