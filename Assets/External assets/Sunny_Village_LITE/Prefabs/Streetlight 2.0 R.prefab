@@ -182,9 +182,9 @@ GameObject:
   - component: {fileID: 8363149667736300251}
   - component: {fileID: 3657217615955397545}
   - component: {fileID: 780519887852178112}
-  - component: {fileID: 5892010884118243844}
+  - component: {fileID: 1143070491544403889}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Collider
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -276,7 +276,7 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: -0.0000038146973, y: 0, z: -0.0000057220454}
---- !u!114 &5892010884118243844
+--- !u!114 &1143070491544403889
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -285,12 +285,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 563623278253042400}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35812a5eac6461d4297def4f986b4b5c, type: 3}
+  m_Script: {fileID: 11500000, guid: 1788b2b393097934587a486a7238d3c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LanternOn: {fileID: 1501159690553342}
-  LanternOff: {fileID: 5881894419424545815}
-  Player: {fileID: 0}
+  NoImputNeeded: 1
+  Objects:
+  - {fileID: 1501159690553342}
+  - {fileID: 5881894419424545815}
+  - {fileID: 563623278253042400}
 --- !u!1 &651245321512544985
 GameObject:
   m_ObjectHideFlags: 0

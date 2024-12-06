@@ -6,6 +6,7 @@ using UnityEngine;
 public class Plank_interaction : MonoBehaviour
 {
     GameObject player;
+    public bool NoImputNeeded = false;
     public GameObject[] Objects;
     bool Bool = true;
 
@@ -16,7 +17,8 @@ public class Plank_interaction : MonoBehaviour
     }
     private void OnTriggerStay(Collider other)
     {
-        if (other == player.GetComponentInChildren<CharacterController>() && Input.GetKey(KeyCode.E))
+        
+        if (other == player.GetComponent<CapsuleCollider>() && (Input.GetKey(KeyCode.E) || NoImputNeeded))
         {
             for (int i = 0; i < Objects.Length; i++)
             {
