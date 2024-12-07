@@ -16,6 +16,8 @@ public class Look_At : MonoBehaviour
     public GameObject pCamera;
     public float speed = 1f;
 
+    Animator anim;
+
     Quaternion LookRotation;
     float angle = 6f;
     FirstPersonController Script;
@@ -25,11 +27,13 @@ public class Look_At : MonoBehaviour
     private void Start()
     {
         Script = pPlayer.GetComponent<FirstPersonController>();
+        anim = gameObject.GetComponentInChildren<Animator>();
     }
 
     public void StartRotation()
     {
-        if(LookCoroutine != null)
+        isCoroutineRunning = true;
+        if (LookCoroutine != null)
         {
             StopCoroutine(LookCoroutine);
         }
@@ -37,70 +41,68 @@ public class Look_At : MonoBehaviour
         LookCoroutine = StartCoroutine(LookAt());
     }
 
-    
+
 
     private IEnumerator LookAt()
     {
-        LookRotation = Quaternion.LookRotation(transform.position - pCamera.transform.position);    
+        LookRotation = Quaternion.LookRotation(transform.position - pCamera.transform.position);
         Script.LockCamera = true;
         float time = 0f;
 
         while (time < 1)
         {
-            
+
             pCamera.transform.rotation = Quaternion.Slerp(pCamera.transform.rotation, LookRotation, time);
 
-            time  += Time.deltaTime * speed;
+            time += Time.deltaTime * speed;
 
             angle = Quaternion.Angle(pCamera.transform.rotation, LookRotation);
 
-            yield return null; 
+            yield return null;
         }
     }
 
-    
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-
-        
-        if (Input.GetKeyDown(KeyCode.I))
+        if(other.tag == "Player")
         {
             StartRotation();
             isCoroutineRunning = true;
-            
         }
-        if(Input.GetKeyDown(KeyCode.O))
+    }
+    void Update()
+    {
+        transform.rotation = Quaternion.LookRotation(transform.position - pCamera.transform.position);
+
+        if ( isCoroutineRunning)
         {
-            Debug.Log("CLICKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
-            Debug.Log("Look AT" + LookRotation.eulerAngles + "  camera: " + pCamera.transform.localEulerAngles.x + "player: " + pPlayer.transform.localEulerAngles.y);
-            Script.pitch = LookRotation.eulerAngles.x- 360f;
+            if(angle< 50)
+            {
+                anim.SetTrigger("Trigger");
+            }
+            if(angle < 0.0001)
+            {
+                StopCoroutine(LookCoroutine);
+                pPlayer.transform.localEulerAngles = new Vector3(0, LookRotation.eulerAngles.y, 0);
+                Script.pitch = LookRotation.eulerAngles.x - 360f;
 
-            pPlayer.transform.localEulerAngles = new Vector3(0,LookRotation.eulerAngles.y,0);
-           
-            Debug.Log("Look AT" + LookRotation.eulerAngles + "  camera: " + pCamera.transform.localEulerAngles.x + "player: " + pPlayer.transform.localEulerAngles.y);
-           
-            StopCoroutine(LookCoroutine);
-            Script.LockCamera = false;
-            isCoroutineRunning = false;
-            Debug.Log("Look AT" + LookRotation.eulerAngles + "  camera: " + pCamera.transform.localEulerAngles.x + "player: " + pPlayer.transform.localEulerAngles.y);
-        }
+                Script.LockCamera = false;
+                isCoroutineRunning = false;
+            }
+            if (Input.GetKeyDown(KeyCode.O))
+            {
+                anim.SetTrigger("Trigger");
 
+                Script.pitch = LookRotation.eulerAngles.x - 360f;
 
+                pPlayer.transform.localEulerAngles = new Vector3(0, LookRotation.eulerAngles.y, 0);
 
-        if (angle < 0.0001 && isCoroutineRunning)
-        {
-            StopCoroutine(LookCoroutine);
-            Debug.Log("CLICKKKKKKKKKKKKKKKKKKKKKKKKKKKKK");
-            pPlayer.transform.localEulerAngles = new Vector3(0, LookRotation.eulerAngles.y, 0);
-            Script.pitch = LookRotation.eulerAngles.x - 360f;
+                StopCoroutine(LookCoroutine);
+                Script.LockCamera = false;
+                isCoroutineRunning = false;
 
-            Debug.Log("Look AT" + LookRotation.eulerAngles + "  camera: " + pCamera.transform.localEulerAngles.x + "player: " + pPlayer.transform.localEulerAngles.y);
+            }
 
-
-            
-            
-            Script.LockCamera = false;
-            isCoroutineRunning = false;
         }
     }
 }
