@@ -14,12 +14,17 @@ public class Look_At : MonoBehaviour
 {
     public GameObject pPlayer;
     public GameObject pCamera;
+    public bool RotateToPlayer = true;
     public float speed = 1f;
 
-    Animator anim;
+
+    public Animator anim;
+    public float timeWait = 5f;
+    float Timer = 0;
+    bool startTimer = false;
 
     Quaternion LookRotation;
-    float angle = 6f;
+    public float angle = 6f;
     FirstPersonController Script;
     bool isCoroutineRunning;
     private Coroutine LookCoroutine;
@@ -27,7 +32,6 @@ public class Look_At : MonoBehaviour
     private void Start()
     {
         Script = pPlayer.GetComponent<FirstPersonController>();
-        anim = gameObject.GetComponentInChildren<Animator>();
     }
 
     public void StartRotation()
@@ -47,6 +51,7 @@ public class Look_At : MonoBehaviour
     {
         LookRotation = Quaternion.LookRotation(transform.position - pCamera.transform.position);
         Script.LockCamera = true;
+        startTimer = true;
         float time = 0f;
 
         while (time < 1)
@@ -72,15 +77,19 @@ public class Look_At : MonoBehaviour
     }
     void Update()
     {
-        transform.rotation = Quaternion.LookRotation(transform.position - pCamera.transform.position);
+        if(RotateToPlayer)transform.rotation = Quaternion.LookRotation(transform.position - pCamera.transform.position);
+
+        if (startTimer) Timer += Time.deltaTime;
+        if (Timer > timeWait)
+        {
+            anim.SetTrigger("TriggerOut");
+            Timer = 0f;
+            startTimer = false;
+        }
 
         if ( isCoroutineRunning)
         {
-            if(angle< 50)
-            {
-                anim.SetTrigger("Trigger");
-            }
-            if(angle < 0.0001)
+            if(angle < 0.5)
             {
                 StopCoroutine(LookCoroutine);
                 pPlayer.transform.localEulerAngles = new Vector3(0, LookRotation.eulerAngles.y, 0);
@@ -88,19 +97,6 @@ public class Look_At : MonoBehaviour
 
                 Script.LockCamera = false;
                 isCoroutineRunning = false;
-            }
-            if (Input.GetKeyDown(KeyCode.O))
-            {
-                anim.SetTrigger("Trigger");
-
-                Script.pitch = LookRotation.eulerAngles.x - 360f;
-
-                pPlayer.transform.localEulerAngles = new Vector3(0, LookRotation.eulerAngles.y, 0);
-
-                StopCoroutine(LookCoroutine);
-                Script.LockCamera = false;
-                isCoroutineRunning = false;
-
             }
 
         }

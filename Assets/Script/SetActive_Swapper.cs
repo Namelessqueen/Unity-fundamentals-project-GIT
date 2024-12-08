@@ -5,20 +5,14 @@ using UnityEngine;
 
 public class Plank_interaction : MonoBehaviour
 {
-    GameObject player;
     public bool NoImputNeeded = false;
     public GameObject[] Objects;
     bool Bool = true;
 
-
-    private void Update()
-    {
-        if(player == null) player = GameObject.FindGameObjectWithTag("Player");
-    }
     private void OnTriggerStay(Collider other)
     {
         
-        if (other == player.GetComponent<CapsuleCollider>() && (Input.GetKey(KeyCode.E) || NoImputNeeded))
+        if (other.tag == "Player" && (Input.GetKey(KeyCode.E) || NoImputNeeded))
         {
             for (int i = 0; i < Objects.Length; i++)
             {
