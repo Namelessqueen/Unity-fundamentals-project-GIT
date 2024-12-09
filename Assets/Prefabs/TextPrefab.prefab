@@ -78,7 +78,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44413c8c943fd87488f21e35a3b65fe4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pPlayer: {fileID: 0}
+  pPlayer: {fileID: 280957323963002592, guid: 7a6677056db26e54fa63301c0680bcb4, type: 3}
   pCamera: {fileID: 0}
   RotateToPlayer: 0
   speed: 0.5
