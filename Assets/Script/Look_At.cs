@@ -89,11 +89,13 @@ public class Look_At : MonoBehaviour
 
         if ( isCoroutineRunning)
         {
+            Debug.Log("!!!!!!   (" + transform.position +")   ("+ pCamera.transform.rotation);
             if(angle < 0.5)
             {
                 StopCoroutine(LookCoroutine);
                 pPlayer.transform.localEulerAngles = new Vector3(0, LookRotation.eulerAngles.y, 0);
-                Script.pitch = LookRotation.eulerAngles.x - 360f;
+                if (LookRotation.eulerAngles.x > 80) Script.pitch = LookRotation.eulerAngles.x - 360f;
+                else Script.pitch = LookRotation.eulerAngles.x;
 
                 Script.LockCamera = false;
                 isCoroutineRunning = false;
