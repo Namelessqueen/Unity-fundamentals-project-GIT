@@ -152,10 +152,7 @@ public class FirstPersonController : MonoBehaviour
 
     void Start()
     {
-        if(lockCursor)
-        {
-            Cursor.lockState = CursorLockMode.Locked;
-        }
+        
 
         if(crosshair)
         {
@@ -230,6 +227,13 @@ public class FirstPersonController : MonoBehaviour
         {
 
         }
+
+        if (lockCursor)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+        }
+        else Cursor.lockState = CursorLockMode.None;
+
 
         #region Camera Zoom
 
@@ -360,6 +364,8 @@ public class FirstPersonController : MonoBehaviour
         }
 
         #endregion
+
+        
 
         CheckGround();
 

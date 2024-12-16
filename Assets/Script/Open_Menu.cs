@@ -6,6 +6,9 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 public class Open_Menu : MonoBehaviour
 {
     public bool isPauzed = false;
+    public GameObject pauzeMenu;
+
+
     GameObject pPlayer;
     FirstPersonController script;
 
@@ -26,12 +29,15 @@ public class Open_Menu : MonoBehaviour
         if (isPauzed)
         {
             Time.timeScale = 0.0f;
-            if (pPlayer != null) script.LockCamera = true;
+            script.lockCursor = false;
+            script.cameraCanMove = false;
         }
         else if(!isPauzed)
         {
             Time.timeScale = 1.0f;
-            if (pPlayer != null) script.LockCamera = false;
+            script.lockCursor = true;
+            script.cameraCanMove = true;
         }
+        pauzeMenu.SetActive(isPauzed);
     }
 }
