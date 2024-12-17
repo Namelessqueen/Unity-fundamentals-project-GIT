@@ -7,8 +7,8 @@ public class StartAnimation : MonoBehaviour
     public Animator animator;
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
-        {
+        if(other.CompareTag("Player"))
+        {   
             animator.SetTrigger("Start");
         }
     }
