@@ -8,36 +8,42 @@ public class Open_Menu : MonoBehaviour
     public bool isPauzed = false;
     public GameObject pauzeMenu;
 
-
     GameObject pPlayer;
     FirstPersonController script;
 
     void Awake()
     {
         pPlayer = GameObject.FindGameObjectWithTag("Player");
-        if(pPlayer != null)script = pPlayer.GetComponent<FirstPersonController>();
+        if (pPlayer != null) script = pPlayer.GetComponent<FirstPersonController>();
     }
-    void Update()
-    {
-        Debug.Log(pPlayer);
 
-        if (Input.GetKeyDown(KeyCode.U))
-        {
-            isPauzed ^= true;
-        }
+    public void Pauzing()
+    {
+        isPauzed ^= true;
 
         if (isPauzed)
         {
             Time.timeScale = 0.0f;
             script.lockCursor = false;
             script.cameraCanMove = false;
+            pauzeMenu.SetActive(true);
         }
-        else if(!isPauzed)
+        else if (!isPauzed)
         {
             Time.timeScale = 1.0f;
             script.lockCursor = true;
             script.cameraCanMove = true;
+            pauzeMenu.SetActive(false);
         }
-        pauzeMenu.SetActive(isPauzed);
+    }
+    void Update()
+    {
+
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Pauzing();
+        }
+
+       
     }
 }

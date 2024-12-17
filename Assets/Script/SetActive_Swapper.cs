@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Plank_interaction : MonoBehaviour
+public class SetActive_Swapper : MonoBehaviour
 {
     public bool NoImputNeeded = false;
     public GameObject[] Objects;
@@ -12,15 +12,19 @@ public class Plank_interaction : MonoBehaviour
     private void OnTriggerStay(Collider other)
     {
         
-        if (other.tag == "Player" && (Input.GetKey(KeyCode.E) || NoImputNeeded))
+        if (other.CompareTag("Player") && (Input.GetKey(KeyCode.E) || NoImputNeeded))
         {
-            for (int i = 0; i < Objects.Length; i++)
-            {
-                Bool ^= Objects[i].activeSelf;
-                Objects[i].SetActive(Bool);
-                Bool = true;
-                //Debug.Log("this is object: " + Objects[i].name + "| and the bool: " + Bool);
-            }
+            Activate();
+        }
+    }
+
+    public void Activate()
+    {
+        for (int i = 0; i < Objects.Length; i++)
+        {
+            Bool ^= Objects[i].activeSelf;
+            Objects[i].SetActive(Bool);
+            Bool = true;
         }
     }
 }

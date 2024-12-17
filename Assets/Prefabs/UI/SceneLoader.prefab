@@ -133,7 +133,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2820645403987069438}
-  - component: {fileID: 637610398919206974}
   m_Layer: 0
   m_Name: SceneLoader
   m_TagString: Untagged
@@ -157,21 +156,6 @@ Transform:
   - {fileID: 6792048112171912555}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &637610398919206974
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3447860850555197213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 60284e0a79c93754cad26d0fdb646326, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  NextScene: Game concept
-  transistionTime: 1
-  transition: {fileID: 6923292672553501688}
 --- !u!1 &6196326739045626726
 GameObject:
   m_ObjectHideFlags: 0
