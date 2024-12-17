@@ -89,7 +89,7 @@ public class Look_At : MonoBehaviour
 
         if ( isCoroutineRunning)
         {
-            Debug.Log("!!!!!!   (" + transform.position +")   ("+ pCamera.transform.rotation);
+            //Debug.Log("!!!!!!   (" + transform.position +")   ("+ pCamera.transform.rotation);
             if(angle < 0.5)
             {
                 StopCoroutine(LookCoroutine);
