@@ -7,7 +7,7 @@ public class SetActive_Swapper : MonoBehaviour
 {
     public bool NoImputNeeded = false;
     public GameObject[] Objects;
-    bool Bool = true;
+    bool isActive = true;
 
     private void OnTriggerStay(Collider other)
     {
@@ -22,9 +22,9 @@ public class SetActive_Swapper : MonoBehaviour
     {
         for (int i = 0; i < Objects.Length; i++)
         {
-            Bool ^= Objects[i].activeSelf;
-            Objects[i].SetActive(Bool);
-            Bool = true;
+            isActive ^= Objects[i].activeSelf;
+            Objects[i].SetActive(isActive);
+            isActive = true;
         }
     }
 }

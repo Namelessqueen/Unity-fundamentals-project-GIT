@@ -6,6 +6,7 @@ using UnityEngine.InputSystem.LowLevel;
 public class Notebook_Script : MonoBehaviour
 {
     public GameObject Notebook;
+    public GameObject Tab;
 
     void Start()
     {
@@ -17,6 +18,7 @@ public class Notebook_Script : MonoBehaviour
         if (Input.GetKey(KeyCode.Tab))
         {
             OpenNotebook(true);
+            Tab.SetActive(false);
         }
         else OpenNotebook(false);
     }

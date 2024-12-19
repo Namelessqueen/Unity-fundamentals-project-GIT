@@ -5,18 +5,18 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    public bool Go = true;
+    public bool OnAwake = false;
     public string NextScene;
     public float transistionTime = 1;
     public Animator transition;
 
     // Update is called once per frame
-    void Update()
+    void Awake()
     {
-        if(Input.GetKeyDown(KeyCode.Space) &&  Go)
+        if (OnAwake)
         {
             LoadNextScene();
-        }   
+        }
     }
 
     public void LoadNextScene()
