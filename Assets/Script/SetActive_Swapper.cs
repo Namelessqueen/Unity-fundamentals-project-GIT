@@ -7,6 +7,7 @@ public class SetActive_Swapper : MonoBehaviour
 {
     public bool NoImputNeeded = false;
     public GameObject[] Objects;
+    public TextUpdater TextUpdaterScript;
     bool isActive = true;
 
     private void OnTriggerStay(Collider other)
@@ -14,6 +15,7 @@ public class SetActive_Swapper : MonoBehaviour
         
         if (other.CompareTag("Player") && (Input.GetKey(KeyCode.E) || NoImputNeeded))
         {
+            changeInt();
             Activate();
         }
     }
@@ -26,5 +28,10 @@ public class SetActive_Swapper : MonoBehaviour
             Objects[i].SetActive(isActive);
             isActive = true;
         }
+    }
+
+    public void changeInt()
+    {
+        if(TextUpdaterScript!= null)TextUpdaterScript.ChangeObjectiveInt(1);
     }
 }
