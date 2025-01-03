@@ -8,14 +8,25 @@ public class SetActive_Swapper : MonoBehaviour
     public bool NoImputNeeded = false;
     public GameObject[] Objects;
     public TextUpdater TextUpdaterScript;
+    public AudioSource _Audio;
     bool isActive = true;
+    bool isInside = false;
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
-        
-        if (other.CompareTag("Player") && (Input.GetKey(KeyCode.E) || NoImputNeeded))
+       if (other.CompareTag("Player"))isInside = true;
+    }
+    private void OnTriggerExit(Collider other)
+    {
+       if (other.CompareTag("Player")) isInside = false;
+    }
+
+    private void Update()
+    {
+        if (isInside && (Input.GetKeyDown(KeyCode.E) || NoImputNeeded))
         {
-            changeInt();
+            ChangeInt();
+            PlayAudio();
             Activate();
         }
     }
@@ -30,7 +41,12 @@ public class SetActive_Swapper : MonoBehaviour
         }
     }
 
-    public void changeInt()
+    public void PlayAudio()
+    {
+        if (_Audio != null) _Audio.Play();
+    }
+
+    public void ChangeInt()
     {
         if(TextUpdaterScript!= null)TextUpdaterScript.ChangeObjectiveInt(1);
     }
