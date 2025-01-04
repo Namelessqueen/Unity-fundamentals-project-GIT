@@ -655,6 +655,7 @@ Transform:
   m_Children:
   - {fileID: 1124053450}
   - {fileID: 1500215777}
+  - {fileID: 801670864}
   m_Father: {fileID: 481573879}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &135031105
@@ -7091,16 +7092,16 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 431886004}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.38470334, y: 0.59329855, z: 0.40260422, w: -0.58130026}
-  m_LocalPosition: {x: 6.825, y: 101.815, z: 130.68}
-  m_LocalScale: {x: 2.9252496, y: 2.92997, z: 2.9227798}
+  m_LocalRotation: {x: -0.40260422, y: 0.58130026, z: 0.38470334, w: 0.59329855}
+  m_LocalPosition: {x: -0.14003405, y: 0.43344116, z: 5.338613}
+  m_LocalScale: {x: 1.9501665, y: 1.9533132, z: 1.9485201}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 297168200}
   - {fileID: 1624659051}
   - {fileID: 1384751852}
   - {fileID: 1810155123}
-  m_Father: {fileID: 1446057262}
+  m_Father: {fileID: 801670864}
   m_LocalEulerAnglesHint: {x: -67.666, y: -90, z: -1.746}
 --- !u!23 &431886006
 MeshRenderer:
@@ -23621,7 +23622,7 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 1446057262}
+    m_TransformParent: {fileID: 121622597}
     m_Modifications:
     - target: {fileID: 161755802170241414, guid: dd151113af7bdb34d9c1c947a762b900,
         type: 3}
@@ -23646,17 +23647,17 @@ PrefabInstance:
     - target: {fileID: 161755802170241414, guid: dd151113af7bdb34d9c1c947a762b900,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 6.6149487
+      value: 52.86454
       objectReference: {fileID: 0}
     - target: {fileID: 161755802170241414, guid: dd151113af7bdb34d9c1c947a762b900,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 101.16484
+      value: -5.212822
       objectReference: {fileID: 0}
     - target: {fileID: 161755802170241414, guid: dd151113af7bdb34d9c1c947a762b900,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 138.68791
+      value: 163.42188
       objectReference: {fileID: 0}
     - target: {fileID: 161755802170241414, guid: dd151113af7bdb34d9c1c947a762b900,
         type: 3}
@@ -23864,6 +23865,10 @@ PrefabInstance:
         type: 3}
       insertIndex: -1
       addedObject: {fileID: 524871312}
+    - targetCorrespondingSourceObject: {fileID: 161755802170241414, guid: dd151113af7bdb34d9c1c947a762b900,
+        type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 431886005}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4092488227146488076, guid: dd151113af7bdb34d9c1c947a762b900,
         type: 3}
@@ -40101,6 +40106,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PriestClone
       objectReference: {fileID: 0}
+    - target: {fileID: 4363578991983522480, guid: 892372eb0d717924a928ab4795371423,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6512865942898018984, guid: 892372eb0d717924a928ab4795371423,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -42671,8 +42681,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 493604568}
-  - {fileID: 801670864}
-  - {fileID: 431886005}
   m_Father: {fileID: 481573879}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1451837892
