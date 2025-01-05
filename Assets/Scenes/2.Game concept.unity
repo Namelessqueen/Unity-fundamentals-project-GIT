@@ -38006,6 +38006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 913208965}
+  TriggerName: Start
 --- !u!65 &1198169454
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38985,6 +38986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 346702882}
+  TriggerName: Start
 --- !u!65 &1334591087
 BoxCollider:
   m_ObjectHideFlags: 0

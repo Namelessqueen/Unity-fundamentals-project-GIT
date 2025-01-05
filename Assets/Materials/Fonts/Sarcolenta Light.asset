@@ -58,11 +58,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Sarcolenta SDF
+  m_Name: Sarcolenta Light
   m_EditorClassIdentifier: 
-  hashCode: 274132719
+  hashCode: -2112109824
   material: {fileID: 8523668337829270607}
-  materialHashCode: -370863121
+  materialHashCode: 1157590688
   m_Version: 1.1.0
   m_SourceFontFileGUID: f5148eac12afe3047b67e0378719416f
   m_SourceFontFile_EditorRef: {fileID: 12800000, guid: f5148eac12afe3047b67e0378719416f,
@@ -2620,7 +2620,8 @@ Material:
   m_Shader: {fileID: 4800000, guid: 0ed35a788cbb94f4ba60c3abc561e84b, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
-  m_ValidKeywords: []
+  m_ValidKeywords:
+  - BEVEL_ON
   m_InvalidKeywords: []
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -2714,6 +2715,6 @@ Material:
     - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectFaceColor: {r: 0, g: 0, b: 0, a: 1}
     - _ReflectOutlineColor: {r: 0, g: 0, b: 0, a: 1}
-    - _SpecularColor: {r: 85.89197, g: 10.792707, b: 0, a: 1}
+    - _SpecularColor: {r: 67.79354, g: 8.51856, b: 0, a: 1}
     - _UnderlayColor: {r: 0, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

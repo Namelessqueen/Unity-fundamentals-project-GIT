@@ -5,11 +5,14 @@ using UnityEngine;
 public class StartAnimation : MonoBehaviour
 {
     public Animator animator;
-    private void OnTriggerEnter(Collider other)
+    public string TriggerName;
+
+    private void OnTriggerStay(Collider other)
     {
         if(other.CompareTag("Player"))
         {   
-            animator.SetTrigger("Start");
+            animator.SetTrigger(TriggerName);
+            gameObject.SetActive(false);
         }
     }
 }
