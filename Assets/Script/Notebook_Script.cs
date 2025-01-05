@@ -18,7 +18,7 @@ public class Notebook_Script : MonoBehaviour
         if (Input.GetKey(KeyCode.Tab))
         {
             OpenNotebook(true);
-            Tab.SetActive(false);
+            if(Tab !=null) Tab.SetActive(false);
         }
         else OpenNotebook(false);
     }
