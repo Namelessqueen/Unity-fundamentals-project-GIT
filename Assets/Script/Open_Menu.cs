@@ -5,7 +5,7 @@ using static UnityEditor.Experimental.GraphView.GraphView;
 
 public class Open_Menu : MonoBehaviour
 {
-    public bool isPauzed = false;
+    bool isPauzed = false;
     public GameObject pauzeMenu;
 
     GameObject pPlayer;
